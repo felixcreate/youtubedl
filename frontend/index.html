@@ -208,8 +208,9 @@
             var atot;
 			var tot;
             $(document).ready(function() {
-				vload = document.getElementsByClassName("loader1")[0];
-				aload = document.getElementsByClassName("loader2")[0];
+		derror = document.getElementById("error");
+		vload = document.getElementsByClassName("loader1")[0];
+		aload = document.getElementsByClassName("loader2")[0];
                 document.getElementById("url").addEventListener("keyup", function(event) {
                     if(event.keyCode == 13) {
                         document.getElementById("video").click();
@@ -241,7 +242,6 @@
                 document.body.removeChild(a);
             }
             function validate(turl) {
-                derror = document.getElementById("error");
                 try {
                     var urlob = new URL(turl);
                     if(urlob.hostname == "www.youtube.com" || urlob.hostname == "youtube.com") {
