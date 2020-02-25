@@ -3,7 +3,7 @@
         $url = $_GET["url"];
         header('Connection: keep-alive');
         $name = exec("/var/www/youtube-backend/download.py ".$url);
-        if($name == "error") {
+        if($name == "error" || $name == "") {
             header('Isthererr: true');
         }
         else {
