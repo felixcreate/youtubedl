@@ -10,10 +10,10 @@ File and directory structure:
 -   /var/www/youtube-backend/: 
     -   download.py - owner:www-data - permissions: 775
     -   audiodownload.py - owner:www-data - permissions: 775
-    -   /*create two empty log files here, log.txt and loga.txt*/
+    -   /* create two empty log files here, log.txt and loga.txt*/
     -   log.txt - owner:www-data - permissions: 666
     -   loga.txt - owner:www-data - permissions: 666
-    -   /*add an empty directory here named "file"*/
+    -   /* add an empty directory here named "file"*/
     -   file/ - owner:www-data - permissions: 775
 -   /var/www/(where ever you want to put the frontend files):
     -   index.html - owner:www-data - permissions: 664
