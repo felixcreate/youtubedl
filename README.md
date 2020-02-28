@@ -8,7 +8,7 @@ Note: This code only works if you're using apache2 on ubuntu 18.04 unless you're
 
 File and directory structure: 
 -   /var/www/youtube-backend/: 
--       download.py - owner:www-data - permissions: 775
+    -   download.py - owner:www-data - permissions: 775
 -       audiodownload.py - owner:www-data - permissions: 775
 -       /*create two empty log files here, log.txt and loga.txt*/
 -       log.txt - owner:www-data - permissions: 666
