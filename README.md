@@ -9,18 +9,18 @@ Note: This code only works if you're using apache2 on ubuntu 18.04 unless you're
 File and directory structure: 
 -   /var/www/youtube-backend/: 
     -   download.py - owner:www-data - permissions: 775
--       audiodownload.py - owner:www-data - permissions: 775
--       /*create two empty log files here, log.txt and loga.txt*/
--       log.txt - owner:www-data - permissions: 666
--       loga.txt - owner:www-data - permissions: 666
--       /*add an empty directory here named "file"*/
--       file/ - owner:www-data - permissions: 775
+    -   audiodownload.py - owner:www-data - permissions: 775
+    -   /*create two empty log files here, log.txt and loga.txt*/
+    -   log.txt - owner:www-data - permissions: 666
+    -   loga.txt - owner:www-data - permissions: 666
+    -   /*add an empty directory here named "file"*/
+    -   file/ - owner:www-data - permissions: 775
 -   /var/www/(where ever you want to put the frontend files):
--       index.html - owner:www-data - permissions: 664
--       submit.php - owner:www-data - permissions: 775
--       audiosubmit.php - owner:www-data - permissions: 775
--       title.php - owner:www-data - permissions: 775
--       exist.php - owner:www-data - permissions: 775
+    -   index.html - owner:www-data - permissions: 664
+    -   submit.php - owner:www-data - permissions: 775
+    -   audiosubmit.php - owner:www-data - permissions: 775
+    -   title.php - owner:www-data - permissions: 775
+    -   exist.php - owner:www-data - permissions: 775
         
 Make sure to install youtube-dl from source files and not apt package manager, and make sure it's located in "/usr/local/bin/youtube-dl".
 
