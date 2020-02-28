@@ -7,8 +7,8 @@ This also contains a youtube-dl updater service.
 Note: This code only works if you're using apache2 on ubuntu 18.04 unless you're willing to go through all the files and change the file paths.
 
 File and directory structure: 
--   /var/www/youtube-backend/: 
--       download.py - owner:www-data - permissions: 775
+    /var/www/youtube-backend/: 
+        download.py - owner:www-data - permissions: 775
         audiodownload.py - owner:www-data - permissions: 775
         /*create two empty log files here, log.txt and loga.txt*/
         log.txt - owner:www-data - permissions: 666
