@@ -436,7 +436,7 @@
                     }
                 });
             });
-            function downloadFile(data, fileName, type="text/plain") {
+            function downloadFile(data, fileName) {
                 // Create an invisible A element
                 const a = document.createElement("a");
                 a.style.display = "none";
@@ -455,28 +455,68 @@
                 window.URL.revokeObjectURL(a.href);
                 document.body.removeChild(a);
             }
-            function validate(turl) {
+            function validate(turl, diff) {
                 try {
                     var urlob = new URL(turl);
                     if(urlob.hostname == "www.youtube.com" || urlob.hostname == "youtube.com") {
-                        if(urlob.search.length == 14) {
-                            var epos = urlob.search.indexOf("=", 1);
-                            var fquery = urlob.search.slice(1, epos);
-                            if(fquery == "v") {
-                                derror.style.display = "none";
-                                return 1;
-                            }
-                            else {
-                                derror.innerHTML = "Error 03: incorrect url format, url should be 'https://youtube.com/watch?v=' followed by an 11 character video id";
-                                derror.style.display = "initial";
-                                return 0;
-                            }
-                        }
-                        else {
-                            derror.innerHTML = "Error 03: incorrect url format, url should be 'https://youtube.com/watch?v=' followed by an 11 character video id";
-                            derror.style.display = "initial";
-                            return 0;
-                        }
+						var urlp = urlob.pathname;
+                        if(urlp == "/watch" || urlp == "/watch/") {
+							var squery = urlob.searchParams;
+                        	var fquery = squery.get("v");
+                        	if(urlob.search.length == 14) {
+                        	    if(fquery != null) {
+									if(fquery.length == 11) {
+                        	        	derror.style.display = "none";
+										return 1;
+									}
+									else {
+										derror.innerHTML = "Error 08: video id/v query isn't 11 characters";
+                        	        	derror.style.display = "initial";
+										return 0;
+									}
+                        	    }
+                        	    else {
+                        	        derror.innerHTML = "Error 07: no v query, there must be a v query";
+                        	        derror.style.display = "initial";
+                        	        return 0;
+                        	    }
+							}
+							else if(urlob.search.length > 14) {
+								if(fquery != null) {
+                        	        if(fquery.length == 11) {
+										var fixed = "https://youtube.com/watch?v=" + fquery;
+										derror.style.display = "none";
+										if(diff == "v") {
+											url = fixed;
+										}
+										else {
+											aurl = fixed;
+										}
+                        	            return 1;
+                        	        }
+                        	        else {
+										derror.innerHTML = "Error 08: video id/v query isn't 11 characters";
+                        	        	derror.style.display = "initial";
+										return 0;
+                        	        }
+                        	    }
+                        	    else {
+                        	        derror.innerHTML = "Error 07: no v query, there must be a v query";
+                        	        derror.style.display = "initial";
+                        	        return 0;
+                        	    }
+							}
+                        	else {
+                        	    derror.innerHTML = "Error 03: incorrect url format, url should be 'https://youtube.com/watch?v=' followed by an 11 character video id";
+                        	    derror.style.display = "initial";
+                        	    return 0;
+							}
+						}
+						else {
+							derror.innerHTML = "Error 09: url path isn't /watch, url should be 'https://youtube.com/watch?v=' followed by an 11 character id";
+                        	derror.style.display = "initial";
+							return 0;
+						}
                     }
                     else {
                         derror.innerHTML = "Error 02: not youtube.com domain";
@@ -505,7 +545,7 @@
                         derror.style.display = "initial";
                     }
                     else {
-                        if(validate(url)) {
+                        if(validate(url, "v")) {
                             allow = 0;
                             clearTimeout(tot);
                             clearTimeout(atot);
@@ -591,7 +631,7 @@
         	            derror.style.display = "initial";
         	        }
         	        else {
-        	            if(validate(aurl)) {
+        	            if(validate(aurl, "a")) {
         	                allowaudio = 0;
         	                clearTimeout(atot);
         	                clearTimeout(tot);
