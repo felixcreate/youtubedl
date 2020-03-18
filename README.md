@@ -29,4 +29,4 @@ Put youtubedlup.py in /usr/local/bin/ with owner as root and permissions to 755.
 Edit root crontab and add a line for executing script, for example:
 -   @daily /usr/local/bin/youtubedlup.py
     
-Script for deleting old downloaded files coming soon.
+Youtube file deleter should be configured the same way.
