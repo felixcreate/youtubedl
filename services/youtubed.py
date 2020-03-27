@@ -5,22 +5,22 @@ from os import listdir, path, remove
 
 currenttime = datetime.now()
 epochtime = currenttime.timestamp()
-files = listdir("file/")
+files = listdir("/var/www/youtube-backend/file/")
 video2del = []
 audio2del = []
 vidaftertext = ""
 audaftertext = ""
 
 for x in files:
-    t = path.getctime("file/" + x)
+    t = path.getctime("/var/www/youtube-backend/file/" + x)
     if((epochtime - t) > 43200):
         if(x[-3:] == "mp4"):
             video2del.append(x)
         else:
             audio2del.append(x)
-        remove("file/" + x)
+        remove("/var/www/youtube-backend/file/" + x)
 
-logf = open("log.txt", "r")
+logf = open("/var/www/youtube-backend/log.txt", "r")
 
 for y in logf:
     l = y.split(" ")
@@ -28,7 +28,7 @@ for y in logf:
         vidaftertext += y
 logf.close()
 
-logaf = open("loga.txt", "r")
+logaf = open("/var/www/youtube-backend/loga.txt", "r")
 
 for z in logaf:
     la = z.split(" ")
@@ -36,15 +36,10 @@ for z in logaf:
         audaftertext += z
 logaf.close()
 
-logf = open("log.txt", "w")
+logf = open("/var/www/youtube-backend/log.txt", "w")
 logf.write(vidaftertext)
 logf.close()
 
-logaf = open("loga.txt", "w")
+logaf = open("/var/www/youtube-backend/loga.txt", "w")
 logaf.write(audaftertext)
 logaf.close()
-
-print(vidaftertext)
-print(audaftertext)
-print(video2del)
-print(audio2del)
