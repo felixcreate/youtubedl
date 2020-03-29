@@ -430,6 +430,13 @@
                 	color: red;
             	}
 			}
+			.nsel {
+				user-select: none;
+        		-moz-user-select: none;
+        		-khtml-user-select: none;
+        		-webkit-user-select: none;
+        		-o-user-select: none;
+			}
             @keyframes spin {
                 0% { transform: translate(45px, -50%) rotate(0deg); }
                 100% { transform: translate(45px, -50%) rotate(360deg); }
@@ -754,13 +761,13 @@
     </head>
 
     <body id="bo">
-		<div id="explain1">Enter URL here and press 'Download'<br/>to download in <span onmouseover="playv('on')" onmouseout="playv('off')">video</span> format.<br/><div id="arrow1">^</div></div>
+		<div class="nsel" id="explain1">Enter URL here and press 'Download'<br/>to download in <span class="nsel" onmouseover="playv('on')" onmouseout="playv('off')" ontouchstart="playv('on')" ontouchend="playv('off')">video</span> format.<br/><div id="arrow1">^</div></div>
         <input type="url" id="url" spellcheck="false" placeholder="https://youtube.com/watch?v=" size="35" autofocus required/><br/>
         <button id="video" onclick="download()">Download</button>
         <div id="allowv">Sorry you can't download more than one file at a time</div>
 		<div id="loading">Processing</div><div class="loader1"></div>
 		
-		<div id="explain2">Enter URL here and press 'Download'<br/>to download in <span onmouseover="playa('on')" onmouseout="playa('off')">audio</span> format.<br/><div id="arrow2">^</div></div>
+		<div class="nsel" id="explain2">Enter URL here and press 'Download'<br/>to download in <span class="nsel" onmouseover="playa('on')" onmouseout="playa('off')" ontouchstart="playa('on')" ontouchend="playa('off')">audio</span> format.<br/><div id="arrow2">^</div></div>
         <input type="url" id="aurl" spellcheck="false" placeholder="https://youtube.com/watch?v=" size="35"/><br/>
 		<button id="audio" onclick="adownload()">Download</button>
 		<div id="allowa">Sorry you can't download more than one file at a time</div>
@@ -768,11 +775,11 @@
 		<div id="smaker"></div>
 		<div id="error"></div>
 		<audio id="bb" loop>
-			<source src="./bbo.ogg" type="audio/ogg">
-                        <source src="./bb3.mp3" type="audio/mp3">
-                        <source src="./bbv.wav" type="audio/wav">
+            <source src="./bbo.ogg" type="audio/ogg">
+			<source src="./bb3.mp3" type="audio/mp3">
+			<source src="./bbv.wav" type="audio/wav">
 		</audio>
-		<video width="250px" id="ring" loop>
+		<video width="250px" id="ring" loop playsinline webkit-playsinline>
 			<source src="./ring.mp4" type="video/mp4">
 		</video>
     </body>
