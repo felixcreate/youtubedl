@@ -43,6 +43,14 @@
             	    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
             	    text-align: center;
             	}
+				#ring {
+					position: absolute;
+					left: 27%;
+					top: 80px;
+					transform: translate(-38%);
+					opacity: 0.75;
+					display: none;
+				}
             	#arrow1 {
             	    position: relative;
             	    left: -50%;
@@ -51,6 +59,7 @@
             	    text-align: left;
             	}
             	#url {
+					border:solid 1px gray;
             	    position: absolute;
             	    top: 298px;
             	    left: var(--first-element-left-value);
@@ -143,6 +152,7 @@
             	}
             	#aurl {
             	    position: absolute;
+					border:solid 1px gray;
             	    top: 298px;
             	    left: var(--second-element-left-value);
             	    transform: translate(-50%, -50%);
@@ -242,6 +252,14 @@
             	    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
             	    text-align: center;
             	}
+				#ring {
+					position: absolute;
+					left: 50%;
+					top: 60px;
+					transform: translate(-38%);
+					opacity: 0.75;
+					display: none;
+				}
             	#arrow1 {
             	    position: relative;
             	    left: -50%;
@@ -251,6 +269,7 @@
             	}
             	#url {
             	    position: absolute;
+					border:solid 1px gray;
             	    top: 278px;
             	    left: 50%;
             	    transform: translate(-50%, -50%);
@@ -345,6 +364,7 @@
             	    top: 709px;
             	    left: 50%;
             	    transform: translate(-50%, -50%);
+					border:solid 1px gray;
             	}
             	#aurl:focus {
             	    outline: none;
@@ -434,8 +454,28 @@
                     if(event.keyCode == 13) {
                         document.getElementById("audio").click();
                     }
-                });
-            });
+				});
+			});
+			function playa(sw) {
+				var ea = document.getElementById("bb");
+				if(sw == "on") {
+					ea.play();
+				}
+				else {
+					ea.load();
+				}
+			}
+			function playv(sw) {
+				var ev = document.getElementById("ring");
+				if(sw == "on") {
+					ev.style.display = "initial";
+					ev.play();
+				}
+				else {
+					ev.style.display = "none";
+					ev.load();
+				}
+			}
             function downloadFile(data, fileName) {
                 // Create an invisible A element
                 const a = document.createElement("a");
@@ -711,20 +751,26 @@
         </script>
     </head>
 
-    <body>
-		<div id="explain1">Enter URL here and press 'Download'<br/>to download in video format.<br/><div id="arrow1">^</div></div>
+    <body id="bo">
+		<div id="explain1">Enter URL here and press 'Download'<br/>to download in <span onmouseover="playv('on')" onmouseout="playv('off')">video</span> format.<br/><div id="arrow1">^</div></div>
         <input type="url" id="url" spellcheck="false" placeholder="https://youtube.com/watch?v=" size="35" autofocus required/><br/>
         <button id="video" onclick="download()">Download</button>
         <div id="allowv">Sorry you can't download more than one file at a time</div>
 		<div id="loading">Processing</div><div class="loader1"></div>
 		
-		<div id="explain2">Enter URL here and press 'Download'<br/>to download in audio format.<br/><div id="arrow2">^</div></div>
+		<div id="explain2">Enter URL here and press 'Download'<br/>to download in <span onmouseover="playa('on')" onmouseout="playa('off')">audio</span> format.<br/><div id="arrow2">^</div></div>
         <input type="url" id="aurl" spellcheck="false" placeholder="https://youtube.com/watch?v=" size="35"/><br/>
 		<button id="audio" onclick="adownload()">Download</button>
 		<div id="allowa">Sorry you can't download more than one file at a time</div>
 		<div id="loading2">Processing</div><div class="loader2"></div>
 		<div id="smaker"></div>
 		<div id="error"></div>
+		<audio id="bb" loop>
+            <source src="./bb.mp3" type="audio/mpeg">
+		</audio>
+		<video width="250px" id="ring" loop>
+			<source src="./ring.mp4" type="video/mp4">
+		</video>
     </body>
 
 </html>
