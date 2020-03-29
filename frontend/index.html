@@ -469,7 +469,9 @@
 				var ev = document.getElementById("ring");
 				if(sw == "on") {
 					ev.style.display = "initial";
-					ev.play();
+					ev.play().catch(function(error) {
+						ev.style.display = "none";
+					});
 				}
 				else {
 					ev.style.display = "none";
