@@ -1,3 +1,5 @@
+*** This project is no longer maintained - it may not work anymore (I am working on a desktop version - coming soon) ***
+
 Web Youtube downloader source files. 
 
 These are just the web interface files and not the youtube-dl tool itself.
